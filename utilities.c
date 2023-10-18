@@ -49,13 +49,11 @@ void execute_command(char **command_and_args)
 
 				execve(command_path, command_and_args, envp);
 				perror("execve");
-				handle_command_not_found(command_and_args[0]);
 				exit(EXIT_FAILURE);
 			}
 			token = strtok(NULL, ":");
 		}
 		handle_command_not_found(command_and_args[0]);
-		exit(EXIT_FAILURE);
 	}
 	else
 	{

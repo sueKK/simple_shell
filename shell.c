@@ -20,11 +20,11 @@ int main(void)
 		if (fgets(input, _strlen(input), stdin) == NULL)
 		{
 			write_string(STDOUT_FILENO, "\n");
-			exit(EXIT_FAILURE);
+			break;
 		}
-		else
+		if (_strlen(input) == 0)
 		{
-			exit(EXIT_SUCCESS);
+			continue;
 		}
 		input[_strlen(input) - 1] = '\0';
 		command_and_args = tokenize_input(input);
