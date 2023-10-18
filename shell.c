@@ -4,7 +4,6 @@
  * main - Entry point of the program
  *
  * Description: This is a simple shell project implementation
- * 
  *
  * Return: Always returns 0.
  */
