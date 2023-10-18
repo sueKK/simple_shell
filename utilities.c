@@ -4,11 +4,15 @@
  * handle_command_not_found - Handle a command not found error.
  * @command: The command that was not found.
  */
-void handle_command_not_found(const char *command)
+void handle_command_not_found(char *command_and_args)
 {
-	write_string(STDERR_FILENO, "Command not found: ");
-	write_string(STDERR_FILENO, command);
+	const char *error_message;
+
+	error_message = "Command not found";
+	write_string(STDERR_FILENO, error_message);
+	write_string(STDERR_FILENO, command_and_args);
 	write_string(STDERR_FILENO, "\n");
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -19,7 +23,6 @@ void handle_command_not_found(const char *command)
 void execute_command(char **command_and_args)
 {
 	char *token;
-	const char *error_message;
 	pid_t pid = fork();
 
 	if (pid == -1)
@@ -31,26 +34,27 @@ void execute_command(char **command_and_args)
 	{
 		char *path = getenv("PATH");
 		char *path_copy = strdup(path);
-		token = strtok(path_copy, ":");
 
+		token = strtok(path_copy, ":");
 		while (token != NULL)
 		{
 			char command_path[MAX_INPUT_SIZE];
+
 			strcpy(command_path, token);
 			strcat(command_path, "/");
 			strcat(command_path, command_and_args[0]);
-			if (access(command_path, X_OK) == 0) {
+			if (access(command_path, X_OK) == 0)
+			{
 				char *envp[] = { NULL };
+
 				execve(command_path, command_and_args, envp);
 				perror("execve");
+				handle_command_not_found(command_and_args[0]);
 				exit(EXIT_FAILURE);
 			}
 			token = strtok(NULL, ":");
 		}
-		error_message = "Command not found: ";
-		write_string(STDERR_FILENO, error_message);
-		write_string(STDERR_FILENO, command_and_args[0]);
-		write_string(STDERR_FILENO, "\n");
+		handle_command_not_found(command_and_args[0]);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -67,6 +71,7 @@ void execute_command(char **command_and_args)
 void free_command_args(char **command_and_args)
 {
 	int i = 0;
+
 	for (; command_and_args[i] != NULL; i++)
 	{
 		free(command_and_args[i]);
