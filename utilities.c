@@ -2,7 +2,7 @@
 
 /**
  * handle_command_not_found - Handle a command not found error.
- * @command: The command that was not found.
+ * @command_and_args: The command that was not found.
  */
 void handle_command_not_found(char *command_and_args)
 {
