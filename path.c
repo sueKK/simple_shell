@@ -87,7 +87,7 @@ char **get_environment_variables()
  */
 char **retrieve_environment_variables()
 {
-	extern char **environ;
+	char **environ;
 	int env_count = 0;
 	int i;
 	char **var = environ;
