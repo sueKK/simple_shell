@@ -5,7 +5,7 @@
  * @fd: The file descriptor to write to.
  * @str: The string to be written.
  */
-void write_string(int fd, const char *str)
+void write_string(const char *str)
 {
-	write(fd, str, _strlen(str));
+	write(1, str, _strlen(str));
 }
