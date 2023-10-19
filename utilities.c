@@ -8,11 +8,10 @@ void handle_command_not_found(char *command_and_args)
 {
 	const char *error_message;
 
-	error_message = "Command not found";
+	error_message = "./shell: No such file or directory";
 	write_string(STDERR_FILENO, error_message);
 	write_string(STDERR_FILENO, command_and_args);
 	write_string(STDERR_FILENO, "\n");
-	exit(EXIT_FAILURE);
 }
 
 /**
