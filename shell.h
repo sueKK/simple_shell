@@ -17,12 +17,16 @@ size_t _strlen(const char *str);
 char *_strdup(const char *str);
 void write_string(const char *str);
 int _strcmp(const char *s1, const char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, const char *src);
-int execute(char **command, char **av);
+int execute(char **command, char **av, int idx);
 char *read_input(void);
 char **tokenize_input(char *input);
 void free_command(char **array);
+char *_getenv(char *var);
+char *get_path(char *command);
+void reverse_str(char *str, int length);
+void error_message(char *shell_name, char *cmd, int idx);
+char *get_index(int n);
 
 #endif

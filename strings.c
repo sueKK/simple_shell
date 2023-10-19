@@ -42,26 +42,23 @@ char *_strdup(const char *str)
 }
 
 /**
- * _strncmp - Custom implementation of strncmp to compare
- * two strings with a specified maximum length.
+ * _strcmp - Custom implementation of strncmp to compare two strings
  * @s1: The first string to compare.
  * @s2: The second string to compare.
- * @n: The maximum number of characters to compare.
  *
  * Return: An integer less than, equal to, or greater
  * than zero if the first n bytes of s1
  * is found, respectively, to be less than, to match,
  * or be greater than the first n bytes of s2.
  */
-int _strncmp(const char *s1, const char *s2, size_t n)
+int _strcmp(const char *s1, const char *s2)
 {
-	while (n && *s1 && (*s1 == *s2))
+	while (*s1 != '\0' && *s1 == *s2)
 	{
 		s1++;
 		s2++;
-		n--;
 	}
-	return (n == 0 ? 0 : (*(unsigned char *)s1 - *(unsigned char *)s2));
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
 /**

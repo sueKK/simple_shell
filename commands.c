@@ -6,14 +6,23 @@
  *
  * @command: The array of commands to be executed
  * @av: these are the arguments passed to the function
+ * @idx: the index of the input command
  *
  * Return: returns status of command execution
  */
-int execute(char **command, char **av)
+int execute(char **command, char **av, int idx)
 {
+	char *_cmd;
 	int status;
 	pid_t child_pid;
 
+	_cmd = get_path(command[0]);
+	if (!_cmd)
+	{
+		error_message(av[0], command[0], idx);
+		free_command(command);
+		return (127);
+	}
 	child_pid = fork();
 	if (child_pid == -1)
 	{
@@ -22,17 +31,17 @@ int execute(char **command, char **av)
 	}
 	else if (child_pid == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(_cmd, command, environ) == -1)
 		{
-			perror(av[0]);
+			free(_cmd), _cmd = NULL;
 			free_command(command);
-			exit(0);
 		}
 	}
 	else
 	{
 		waitpid(child_pid, &status, 0);
 		free_command(command);
+		free(_cmd), _cmd = NULL;
 	}
 	return (WEXITSTATUS(status));
 }

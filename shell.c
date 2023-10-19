@@ -13,7 +13,7 @@ int main(int ac, char **av)
 {
 	char *input = NULL;
 	char **command = NULL;
-	int status = 0;
+	int status = 0, idx = 0;
 	(void) ac;
 
 	while (1)
@@ -25,11 +25,13 @@ int main(int ac, char **av)
 				write_string("\n");
 			return (status);
 		}
+
+		idx++;
 		command = tokenize_input(input);
 		if (!command)
 			continue;
 
 
-		status = execute(command, av);
+		status = execute(command, av, idx);
 	}
 }
