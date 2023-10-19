@@ -2,37 +2,34 @@
 
 /**
  * main - Entry point of the program
+ * @ac: Argument count
+ * @av: Arguments in the command
  *
  * Description: This is a simple shell project implementation
  *
  * Return: Always returns 0.
  */
-int main(void)
+int main(int ac, char **av)
 {
-	char *prompt = "#cisfun$ ";
 	char *input = NULL;
-	size_t input_size = 0;
-	char *token;
-	char **command;
-	int i = 0;
+	char **command = NULL;
+	int status = 0;
+	(void) ac;
 
 	while (1)
 	{
-		write_string(prompt);
-		getline(&input, &input_size, stdin);
-		token = strtok(input, "\t\n");
-		command = malloc(sizeof(char *) * 1024);
-
-		while (token)
+		input = read_input();
+		if (input == NULL)
 		{
-			command[i] = token;
-			token = strtok(NULL, "\t\n");
-			i++;
+			if (isatty(STDIN_FILENO))
+				write_string("\n");
+			return (status);
 		}
-		command[i] = '\0';
+		command = tokenize_input(input);
+		if (!command)
+			continue;
 
-		execute(command);
-		i = 0;
-		free(command);
+
+		status = execute(command, av);
 	}
 }
