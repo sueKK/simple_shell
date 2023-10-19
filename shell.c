@@ -9,13 +9,12 @@
  */
 int main(void)
 {
-	size_t input_size = 0;
 	char *prompt = "#cisfun$ ";
 	char *input = NULL;
+	size_t input_size = 0;
 	char *token;
 	char **command;
-	int status, i = 0;
-	pid_t child_pid;
+	int i = 0;
 
 	while (1)
 	{
@@ -32,21 +31,7 @@ int main(void)
 		}
 		command[i] = '\0';
 
-		child_pid = fork();
-		if (child_pid == -1)
-		{
-			perror("fork error");
-			exit(EXIT_FAILURE);
-		}
-		else if (child_pid == 0)
-		{
-			if (execve(command[0], command, NULL) == -1)
-				perror("Error executing command");
-		}
-		else
-		{
-			wait(&status);
-		}
+		execute(command);
 		i = 0;
 		free(command);
 	}
