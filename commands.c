@@ -33,8 +33,8 @@ int execute(char **command, char **av, int idx)
 	{
 		if (execve(_cmd, command, environ) == -1)
 		{
-			free(_cmd), _cmd = NULL;
 			free_command(command);
+			free(_cmd), _cmd = NULL;
 		}
 	}
 	else
