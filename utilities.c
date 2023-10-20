@@ -3,7 +3,7 @@
 /**
  * free_command - this function frees the command argumensts
  *
- * @array: the array of tokenized arguments
+ * @array: the array of tokenized arguments.
  * Return: void
  */
 void free_command(char **array)
