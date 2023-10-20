@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * reverse_str - this function reverses a string
+ * reverse_str - this function reverses a string.
  *
- * @str: the string to be reversed
+ * @str: the string to be reversed.
  * @length: the length of the strign to be reversed
  *
  * Return: the reversed string
