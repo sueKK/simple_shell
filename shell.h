@@ -27,10 +27,12 @@ char *_getenv(char *var);
 char *get_path(char *command);
 void reverse_str(char *str, int length);
 void error_message(char *shell_name, char *cmd, int idx);
-char *get_index(int n);
+char *int_to_char(int n);
 void write_env(char **command, int *status);
-void X_shell(char **command, int *status);
 void handle_builtins(char **command, char **av, int *status, int idx);
 int _builtin(char *command);
+int _positive(char *str);
+void X_shell(char **command, char **av, int *status, int idx);
+int char_to_int(char *str);
 
 #endif

@@ -35,7 +35,7 @@ void error_message(char *shell_name, char *cmd, int idx)
 {
 	char *index, message[] = ": not found\n";
 
-	index = get_index(idx);
+	index = int_to_char(idx);
 
 	write(STDERR_FILENO, shell_name, _strlen(shell_name));
 	write(STDERR_FILENO, ": ", 2);
@@ -48,12 +48,12 @@ void error_message(char *shell_name, char *cmd, int idx)
 }
 
 /**
- * get_index - the index of the command entered as input
- * @n: the counter of the index
+ * int_to_char - the integer to be converted into a string or character
+ * @n: the integer to be converted
  *
- * Return: the index of the command
+ * Return: the converted character or string
  */
-char *get_index(int n)
+char *int_to_char(int n)
 {
 	char buffer[20];
 	int i = 0;
@@ -72,4 +72,46 @@ char *get_index(int n)
 	reverse_str(buffer, i);
 
 	return (_strdup(buffer));
+}
+
+/**
+ * _positive - checks if an interger is positive
+ *
+ * @str: the integer string to be checked
+ *
+ * Return: 1 if interger is positive
+ */
+int _positive(char *str)
+{
+	int i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+	}
+	return (1);
+}
+
+/**
+ * char_to_int - converts a string into an integer
+ *
+ * @str: the string to be converted into an integer
+ *
+ * Return: the integer that has been converted
+ */
+int char_to_int(char *str)
+{
+	int i, num = 0;
+
+	i = 0;
+	while (str[i])
+	{
+		num *= 10;
+		num += (str[i] - '0');
+	}
+	return (num);
 }
