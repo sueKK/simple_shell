@@ -2,9 +2,9 @@
 
 /**
  * get_path - this function gets the path of the command and
- * tokenizes it
+ * tokenizes it.
  *
- * @command: this is the input command received by the function
+ * @command: this is the input command received by the function.
  *
  * Return: this returns the path
  */
