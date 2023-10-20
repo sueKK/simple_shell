@@ -2,9 +2,9 @@
 
 /**
  * execute - This function handles execution of
- * commands using the exec functions
+ * commands using the exec functions.
  *
- * @command: The array of commands to be executed
+ * @command: The array of commands to be executed.
  * @av: these are the arguments passed to the function
  * @idx: the index of the input command
  *
