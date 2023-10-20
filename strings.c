@@ -93,11 +93,11 @@ char *_strcat(char *dest, const char *src)
 }
 
 /**
- * _strcpy - Custom implementation of strcpy to copy a string to a destination.
- * @dest: The destination string.
- * @src: The source string to be copied to dest.
+ * _strcpy - Custom implementation of strcpy to copy a string to a destination
+ * @dest: The destination string
+ * @src: The source string to be copied to dest
  *
- * Return: A pointer to the destination string or NULL if allocation fails.
+ * Return: A pointer to the destination string or NULL if allocation fails
  */
 char *_strcpy(char *dest, const char *src)
 {
