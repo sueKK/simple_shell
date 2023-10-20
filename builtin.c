@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _builtin - this function identifies built in commands
+ * _builtin - this function identifies built in commands.
  *
- * @command: the command to be identified
+ * @command: the command to be identified.
  *
  * Return: Always 0
  */

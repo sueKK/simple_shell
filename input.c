@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * read_input - this function reads user input from the stdin stream
+ * read_input - this function reads user input from the stdin stream.
  *
  * Description: this function reads user input and outputs in into the
- * entry point of the program
+ * entry point of the program.
  *
  * Return: the input of the user
  */

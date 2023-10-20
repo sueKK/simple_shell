@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * tokenize_input - this function breaks apart the user input into
- * separate command tokens
- * @input: the user input in form of commands
+ * tokenize_input - this function breaks apart the user input into.
+ * separate command tokens.
+ * @input: the user input in form of commands.
  *
- * Return: the command in token form
+ * Return: the command in token form.
  */
 char **tokenize_input(char *input)
 {

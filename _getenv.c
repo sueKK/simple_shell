@@ -1,9 +1,9 @@
 # include "shell.h"
 
 /**
- * _getenv - this function retrieves the environment variable
+ * _getenv - this function retrieves the environment variable.
  *
- * @var: this is the environment variable
+ * @var: this is the environment variable.
  *
  * Return: the environment PATH value
  */
