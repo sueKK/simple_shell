@@ -17,6 +17,7 @@ size_t _strlen(const char *str);
 char *_strdup(const char *str);
 void write_string(const char *str);
 int _strcmp(const char *s1, const char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, const char *src);
 int execute(char **command, char **av, int idx);
@@ -34,5 +35,6 @@ int _builtin(char *command);
 int _positive(char *str);
 void X_shell(char **command, char **av, int *status, int idx);
 int char_to_int(char *str);
+int _setenv(const char *name, const char *value, int overwrite);
 
 #endif
