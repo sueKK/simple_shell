@@ -30,8 +30,9 @@ int main(int ac, char **av)
 		command = tokenize_input(input);
 		if (!command)
 			continue;
-
-
-		status = execute(command, av, idx);
+		if (_builtin(command[0]))
+			handle_builtins(command, av, &status, idx);
+		else
+			status = execute(command, av, idx);
 	}
 }
